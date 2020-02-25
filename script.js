@@ -1,29 +1,32 @@
 let api = 'http://api.nbp.pl/api/exchangerates/tables/c/'
 let table = document.querySelector('.table');
 
-function creatDivWithClass(value, ...className) {
+function creatDivWithClass(parent, value, ...className) {
     let div = document.createElement('div');
     className.forEach(element => {
         div.classList.add(element);
     });
     div.innerText = value;
-    table.appendChild(div);
+    parent.appendChild(div);
+    return div;
 }
 
 function showTable(rate) {
     let tableArray = rate[0].rates;
     let date = rate[0].effectiveDate;
-    creatDivWithClass(date, "header");
-    creatDivWithClass('Nazwa Waluty', "currency", 'title');
-    creatDivWithClass('Kod', "code", 'title');
-    creatDivWithClass('Kupno', "bid", 'title');
-    creatDivWithClass('Sprzedaż', "ask", 'title');
+    creatDivWithClass(table, date ,"header");
+    let wrap = creatDivWithClass(table, null, "wrap");
+    creatDivWithClass(wrap,'Nazwa Waluty', "currency", 'title');
+    creatDivWithClass(wrap, 'Kod', "code", 'title');
+    creatDivWithClass(wrap,'Kupno', "bid", 'title');
+    creatDivWithClass(wrap,'Sprzedaż', "ask", 'title');
 
     tableArray.forEach(element => {
-        creatDivWithClass(element.currency, "currency");
-        creatDivWithClass(element.code, "code");
-        creatDivWithClass(element.bid, "bid");
-        creatDivWithClass(element.ask , "ask");
+        let parent = creatDivWithClass(table, null, "wrap");
+        creatDivWithClass(parent, element.currency, "currency");
+        creatDivWithClass(parent, element.code, "code");
+        creatDivWithClass(parent, element.bid, "bid");
+        creatDivWithClass(parent, element.ask , "ask");
     });
 
 }
