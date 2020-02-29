@@ -7,12 +7,27 @@
 body {
     min-height: 100vh;
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     background-image: url('bg.jpg');
     background-attachment: fixed;
     background-size: cover;
     background-position: center center;
+}
+
+.converter_wrap{
+    flex-basis: 100%;
+}
+
+.converter{
+    background: rgba(0, 0, 0, .5);
+    color: white;
+    border-radius: 15px;
+    margin: 0 auto;
+    max-width: 50rem;
+    text-align: center;
+    font-size: 16px;
 }
 
 .table {
@@ -61,9 +76,55 @@ body {
 .code,
 .bid,
 .ask {
-    border-bottom: 1px solid white;
+    /*  */
     line-height: 2rem;
     font-size: 1.25rem;
+}
+
+.wrap{
+    border-bottom: 1px solid white;
+}
+
+.wrap:last-child{
+    border: none;
+}
+
+.converter input{
+    background: rgba(255,255,255, .7);
+    border: none;
+    padding: 3px;
+    border-radius: 3px;
+    text-align: center;
+}
+
+input::-webkit-outer-spin-button{
+    display: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance:textfield;
+  }
+
+.submit{
+    background: rgba(255,255,255,.7);
+    padding: 3px;
+    border: none;
+}
+
+.converter select{
+    background: rgba(255,255,255, .7);
+    border:none;
+    padding: 3px;
+    
+}
+
+.converter span{
+    display: block;
+    text-align: center;
+    padding: 16px;
+    font-size: 22px;
+    font-weight: bold;
 }
 
 @media screen and (max-width: 480px) {
